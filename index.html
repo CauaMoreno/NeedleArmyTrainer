@@ -28,31 +28,53 @@
             width: 50px;
             visibility: hidden;
         }
-        .
+        #contador{
+            margin-top: 50px;
+        }
        
     </style>
 </head>
 <body>
-    
-    <div class="BolhasCtn">
-        <div class="hidden" id="1">bolha</div>
-        <div class="hidden" id="2">bolha</div>
-        <div class="hidden" id="3">bolha</div>
-        <div class="hidden" id="4">bolha</div>
-        <div class="hidden" id="5">bolha</div>
-        <div class="hidden" id="6">bolha</div>
-        <div class="hidden" id="7">bolha</div>
-        <div class="hidden" id="8">bolha</div>
-        <div class="hidden" id="9">bolha</div>
+    <script>
+        let cont =0
+        function click(e){
+            const cont = document.getElementById("contador")
+            cont++
+            cont.innerText="pontos: "+(cont+1)
+        }
+    </script>
+    <div  id="BolhasCtn" class="BolhasCtn">
+        <div class="" onclick="click()" id="1">bolha</div>
+        <div class="hidden" onclick="click()" id="2">bolha</div>
+        <div class="hidden" onclick="click()" id="3">bolha</div>
+        <div class="hidden" onclick="click()" id="4">bolha</div>
+        <div class="hidden" onclick="click()" id="5">bolha</div>
+        <div class="hidden" onclick="click()" id="6">bolha</div>
+        <div class="hidden" onclick="click()" id="7">bolha</div>
+        <div class="hidden" onclick="click()" id="8">bolha</div>
+        <div class="hidden" onclick="click()" id="9">bolha</div>
         
     </div>
-    <div id="Contador">
-        Contador
+    <div id="contador">
+        0
     </div>
     <script>
-        const id =  parseInt(Math.random() * (9 - 1) + 1);
-        let div = document.getElementById(id);
+        
+       
 
+        let eTime=0
+        window.setInterval(
+            ()=>{
+                const id =  parseInt(Math.random() * (9 - 1) + 1);
+                let div = document.getElementById(id);
+                let bCtn = document.getElementById("BolhasCtn");
+                
+                [...bCtn.children].forEach(bolha => {
+                    bolha.className="hidden"
+                });
+                div.className="visible"
+            },1500
+        )
     </script>
 </body>
 </html>
