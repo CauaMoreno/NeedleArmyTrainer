@@ -5,46 +5,91 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-       
-        body{
+        body {
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
             width: 100vw;
             height: 100vh;
+            
         }
-        .BolhasCtn{
+        .BolhasCtn {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap:25px;
-            border:5px solid black;
+            gap: 25px;
+            border: 5px solid black;
             padding: 15px;
             border-radius: 5px;
-            
         }
-        .hidden{
+        .hidden {
             width: 50px;
+            height: 50px;
+            background-color: lightblue;
             visibility: hidden;
+            text-align: center;
+            line-height: 50px;
+            border-radius: 50%;
         }
-        #contador{
+        .visible {
+            visibility: visible;
+        }
+        #contador {
             margin-top: 50px;
         }
-       
+        #timer {
+            margin-top: 20px;
+        }
+        #result {
+            margin-top: 30px;
+            max-width:  350px;
+            border: 5px solid black;
+            padding: 20px;
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
     <script>
-        let cont =0
-        function click(e){
-            const cont = document.getElementById("contador")
-            cont++
-            cont.innerText="pontos: "+(cont+1)
+        let cont = 0; // Contador de pontos
+        let timeLeft = 10; // Tempo do timer em segundos (30 segundos)
+        let gameOver = false;
+
+        function click() {
+            if (!gameOver) {
+                cont++; // Incrementa o contador
+                const contElement = document.getElementById("contador");
+                contElement.innerText = "pontos: " + cont;
+            }
         }
+
+        // Função para o timer
+        function updateTimer() {
+            // cont=11
+            const resultElement = document.getElementById("result");
+
+            if (timeLeft > 0 && !gameOver) {
+                timeLeft--; // Decrementa o tempo
+                const timerElement = document.getElementById("timer");
+                timerElement.innerText = "Tempo: " + timeLeft + "s";
+            } else if (timeLeft === 0 && !gameOver) {
+                gameOver = true; // Jogo acabou
+                if (cont < 10) {
+                    resultElement.innerText = "Tempo esgotado! Você não fez pontos suficientes";
+                } 
+            }
+            if (cont > 10) {
+                resultElement.innerText = "Parabens você é um bom soldado";
+            } 
+        }
+
+        // Atualiza o timer a cada segundo
+        setInterval(updateTimer, 1000);
     </script>
-    <div  id="BolhasCtn" class="BolhasCtn">
-        <div class="" onclick="click()" id="1">bolha</div>
+
+    <div id="BolhasCtn" class="BolhasCtn">
+        <div class="hidden" onclick="click()" id="1">bolha</div>
         <div class="hidden" onclick="click()" id="2">bolha</div>
         <div class="hidden" onclick="click()" id="3">bolha</div>
         <div class="hidden" onclick="click()" id="4">bolha</div>
@@ -53,28 +98,33 @@
         <div class="hidden" onclick="click()" id="7">bolha</div>
         <div class="hidden" onclick="click()" id="8">bolha</div>
         <div class="hidden" onclick="click()" id="9">bolha</div>
-        
     </div>
+    
     <div id="contador">
-        0
+        pontos: 0
     </div>
-    <script>
-        
-       
 
-        let eTime=0
-        window.setInterval(
-            ()=>{
-                const id =  parseInt(Math.random() * (9 - 1) + 1);
+    <div id="timer">
+        Tempo: 10s
+    </div>
+
+    <div id="result">
+        Faça 10 pontos no tempo para passar no treinamento
+    </div>
+
+    <script>
+        setInterval(() => {
+            if (!gameOver) {
+                const id = parseInt(Math.random() * 9 + 1); // Gera um número aleatório de 1 a 9
                 let div = document.getElementById(id);
                 let bCtn = document.getElementById("BolhasCtn");
-                
+
                 [...bCtn.children].forEach(bolha => {
-                    bolha.className="hidden"
+                    bolha.className = "hidden"; // Esconde todas as bolhas
                 });
-                div.className="visible"
-            },1500
-        )
+                div.className = "visible"; // Torna a bolha visível
+            }
+        }, 1500);
     </script>
 </body>
 </html>
