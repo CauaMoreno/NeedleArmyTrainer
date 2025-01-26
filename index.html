@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Needle Army Trainer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
@@ -16,8 +16,29 @@
             width: 100vw;
             height: 100vh;
             font-family: VT323;
-            margin-top: 50px;
-            
+            padding: 0%;
+            margin: 0;
+            gap: 30px;
+        }
+        .cursor{
+            background-color: red;
+        }
+        h1{
+            width: 100%;
+            background-color: #204056;
+            margin: 0%;
+            padding-bottom: 10px;
+            padding-top: 10px;
+            padding-left: 50px;
+            border-bottom: 5px solid black;
+            color: aliceblue;
+
+        }
+        .mainCtn{
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            flex-direction: column;
         }
         .BolhasCtn {
             display: flex;
@@ -28,7 +49,8 @@
             padding: 15px;
             border-radius: 5px;
             height: 80px;
-            width: 80%;
+            width: 100%;
+            background-color: #204056a9;
         }
         .hidden {
             width: 50px;
@@ -55,9 +77,11 @@
             visibility: visible;
             width: 50px;
             height: 50px;
-            border-radius: 300px;
-            border: 4px solid black;
             animation: pop 1s infinite ;
+            background-image: url("/bubble_6.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+            
 
         }
         .bolha:hover{
@@ -81,6 +105,8 @@
             border: 5px solid black;
             padding: 20px;
             border-radius: 5px;
+            background-color: #204056;
+            color: aliceblue;
         }
     </style>
 </head>
@@ -124,28 +150,32 @@
         setInterval(updateTimer, 1000);
     </script>
     <h1>
-        Needle army trainement
+        Needle Army Trainer
     </h1>
-    <div id="BolhasCtn"  class="BolhasCtn">
-        <div class="bolha" id="1"></div>
-        <div class="hidden" id="2"></div>
-        <div class="hidden" id="3"></div>
-        <div class="hidden" id="4"></div>
-        <div class="hidden" id="5"></div>
-        <div class="hidden" id="6"></div>
-        <div class="hidden" id="7"></div>
-        <div class="hidden" id="8"></div>
-        <div class="hidden" id="9"></div>
+    <div class="mainCtn">
+        
+        <div id="BolhasCtn"  class="BolhasCtn">
+            <div class="bolha" id="1"></div>
+            <div class="hidden" id="2"></div>
+            <div class="hidden" id="3"></div>
+            <div class="hidden" id="4"></div>
+            <div class="hidden" id="5"></div>
+            <div class="hidden" id="6"></div>
+            <div class="hidden" id="7"></div>
+            <div class="hidden" id="8"></div>
+            <div class="hidden" id="9"></div>
+        </div>
+        <div id="contador">
+            pontos: 0
+        </div>
+        <div id="timer">
+            Tempo: 10s
+        </div>
+        <div id="result">
+            Faça 10 pontos no tempo para passar no treinamento
+        </div>
     </div>
-    <div id="contador">
-        pontos: 0
-    </div>
-    <div id="timer">
-        Tempo: 10s
-    </div>
-    <div id="result">
-        Faça 10 pontos no tempo para passar no treinamento
-    </div>
+    
 
     <script>
         setInterval(() => {
