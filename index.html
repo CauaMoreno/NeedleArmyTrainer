@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            width: 100vw;
+            height: 100vh;
+        }
+        .BolhasCtn{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap:25px;
+            border:5px solid black;
+            padding: 15px;
+            border-radius: 5px;
+            
+        }
+        .hidden{
+            width: 50px;
+            visibility: hidden;
+        }
+        .
+       
+    </style>
+</head>
+<body>
+    
+    <div class="BolhasCtn">
+        <div class="hidden" id="1">bolha</div>
+        <div class="hidden" id="2">bolha</div>
+        <div class="hidden" id="3">bolha</div>
+        <div class="hidden" id="4">bolha</div>
+        <div class="hidden" id="5">bolha</div>
+        <div class="hidden" id="6">bolha</div>
+        <div class="hidden" id="7">bolha</div>
+        <div class="hidden" id="8">bolha</div>
+        <div class="hidden" id="9">bolha</div>
+        
+    </div>
+    <div id="Contador">
+        Contador
+    </div>
+    <script>
+        const id =  parseInt(Math.random() * (9 - 1) + 1);
+        let div = document.getElementById(id);
+
+    </script>
+</body>
+</html>
